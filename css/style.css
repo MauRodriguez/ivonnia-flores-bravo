@@ -1,15 +1,15 @@
 :root {
-  --bg: #11161d;
-  --bg-alt: #181f29;
-  --text: #e6eaf0;
-  --muted: #9ba7b6;
-  --accent: #b79cf0;        /* violeta claro: textos y detalles */
-  --accent-dark: #cdb9f6;   /* violeta más claro: links y hover de texto */
-  --btn: #6b3fc4;           /* violeta oscuro: botones y bordes */
-  --btn-hover: #8157dc;
+  --bg: #2c211c;            /* chocolate oscuro */
+  --bg-alt: #362a23;        /* chocolate medio */
+  --card: #403229;          /* chocolate con leche */
+  --text: #f3ebe4;          /* crema */
+  --muted: #c2b3a7;         /* beige grisáceo */
+  --accent: #e0b48a;        /* caramelo: textos y detalles */
+  --accent-dark: #efcba5;   /* caramelo claro: links y hover de texto */
+  --btn: #9c5c31;           /* chocolate cobrizo: botones */
+  --btn-hover: #854a25;
   --on-btn: #ffffff;
-  --card: #1e2632;
-  --line: rgba(255, 255, 255, .08);
+  --line: rgba(255, 255, 255, .1);
   --radius: 16px;
   --max: 1080px;
   color-scheme: dark;
@@ -37,7 +37,7 @@ a { color: var(--accent-dark); }
   position: sticky; top: 0; z-index: 10;
   display: flex; justify-content: space-between; align-items: center;
   padding: 1rem 5%;
-  background: rgba(17, 22, 29, .92);
+  background: rgba(44, 33, 28, .92);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
 }
@@ -63,7 +63,7 @@ a { color: var(--accent-dark); }
 }
 .hero-photo {
   aspect-ratio: 4 / 5;
-  background: linear-gradient(135deg, var(--bg-alt), #2a3646);
+  background: linear-gradient(135deg, var(--bg-alt), #4a3a30);
   border-radius: 200px 200px var(--radius) var(--radius);
   overflow: hidden;
   border: 1px solid var(--line);
@@ -75,7 +75,7 @@ a { color: var(--accent-dark); }
 .btn { display: inline-block; padding: .85rem 1.6rem; border-radius: 999px; text-decoration: none; font-weight: 500; transition: .2s; }
 .btn-primary { background: var(--btn); color: var(--on-btn); }
 .btn-primary:hover { background: var(--btn-hover); }
-.btn-ghost { border: 1.5px solid var(--btn-hover); color: var(--accent-dark); }
+.btn-ghost { border: 1.5px solid var(--accent); color: var(--accent-dark); }
 .btn-ghost:hover { background: var(--btn); border-color: var(--btn); color: var(--on-btn); }
 
 /* Layouts */

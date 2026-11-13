@@ -121,3 +121,41 @@ a { color: var(--accent-dark); }
   .two-col, .cards, .facts { grid-template-columns: 1fr; }
   .section { padding: 3.5rem 5%; }
 }
+
+/* Transición entre páginas */
+body { animation: fadeIn .45s ease both; }
+main { animation: rise .6s ease both; }
+body.leaving { opacity: 0; transition: opacity .3s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes rise { from { transform: translateY(14px); } to { transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  body, main { animation: none; }
+  body.leaving { transition: none; }
+}
+
+/* Botón de la portada hacia Trayectoria */
+.btn-more { margin-top: 2rem; }
+
+/* Página Trayectoria */
+.page-head { max-width: var(--max); margin: 0 auto; padding: 3rem 5% 2rem; }
+.back-link { display: inline-block; margin-bottom: 1.5rem; text-decoration: none; color: var(--accent-dark); font-size: .95rem; }
+.back-link:hover { color: var(--accent); }
+.chips { display: flex; flex-wrap: wrap; gap: .6rem; }
+.chips a { border: 1px solid var(--line); padding: .4rem 1rem; border-radius: 999px; text-decoration: none; font-size: .9rem; color: var(--text); transition: .2s; }
+.chips a:hover { background: var(--btn); border-color: var(--btn); color: var(--on-btn); }
+
+.block { max-width: var(--max); margin: 0 auto; padding: 3rem 5%; border-top: 1px solid var(--line); }
+.block h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 1.2rem; }
+.block h3 { font-size: 1.1rem; color: var(--accent-dark); margin: 2rem 0 1rem; }
+.block-note { color: var(--muted); max-width: 680px; margin-bottom: 1.5rem; }
+
+.tl { list-style: none; display: grid; gap: 1.1rem; }
+.tl li { display: grid; grid-template-columns: 130px 1fr; gap: 1.5rem; padding-bottom: 1.1rem; border-bottom: 1px solid var(--line); }
+.tl li:last-child { border-bottom: 0; }
+.tl b { color: var(--accent); font-weight: 600; }
+.tl small { display: block; color: var(--muted); font-size: .9rem; margin-top: .2rem; }
+.tl .tag { display: inline-block; font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--accent-dark); border: 1px solid var(--line); border-radius: 999px; padding: .05rem .6rem; margin-left: .4rem; vertical-align: middle; }
+
+@media (max-width: 800px) {
+  .tl li { grid-template-columns: 1fr; gap: .2rem; }
+}

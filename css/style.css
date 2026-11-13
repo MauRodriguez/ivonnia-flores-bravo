@@ -259,3 +259,17 @@ html.js .block.active { display: block; animation: tabIn .35s ease both; }
   .hero { grid-template-columns: 1fr 1.2fr; }
   .hero-photo { order: -1; }
 }
+
+/* Secciones con fondo alterno: todo el contenido alineado en la misma columna */
+.section-alt {
+  padding-left: max(5%, calc(50% - var(--max) / 2));
+  padding-right: max(5%, calc(50% - var(--max) / 2));
+}
+.section-alt > * {
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+.section-alt > .lead {
+  max-width: 560px;
+}

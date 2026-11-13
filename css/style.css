@@ -253,3 +253,9 @@ html.js .block.active { display: block; animation: tabIn .35s ease both; }
 
 .bg-taza { --bg-photo: url('../img/fondo-taza.jpg'); }
 .bg-consultorio { --bg-photo: url('../img/fondo-consultorio.jpg'); }
+
+/* Portada: foto a la izquierda, texto a la derecha (solo en pantallas grandes) */
+@media (min-width: 801px) {
+  .hero { grid-template-columns: 1fr 1.2fr; }
+  .hero-photo { order: -1; }
+}

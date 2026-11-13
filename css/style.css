@@ -140,9 +140,6 @@ body.leaving { opacity: 0; transition: opacity .3s ease; }
 .page-head { max-width: var(--max); margin: 0 auto; padding: 3rem 5% 2rem; }
 .back-link { display: inline-block; margin-bottom: 1.5rem; text-decoration: none; color: var(--accent-dark); font-size: .95rem; }
 .back-link:hover { color: var(--accent); }
-.chips { display: flex; flex-wrap: wrap; gap: .6rem; }
-.chips a { border: 1px solid var(--line); padding: .4rem 1rem; border-radius: 999px; text-decoration: none; font-size: .9rem; color: var(--text); transition: .2s; }
-.chips a:hover { background: var(--btn); border-color: var(--btn); color: var(--on-btn); }
 
 .block { max-width: var(--max); margin: 0 auto; padding: 3rem 5%; border-top: 1px solid var(--line); }
 .block h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 1.2rem; }
@@ -159,3 +156,40 @@ body.leaving { opacity: 0; transition: opacity .3s ease; }
 @media (max-width: 800px) {
   .tl li { grid-template-columns: 1fr; gap: .2rem; }
 }
+
+/* Barra de pestañas fija */
+.chips {
+  position: sticky;
+  top: var(--header-h, 64px);
+  z-index: 9;
+  display: flex;
+  gap: .6rem;
+  padding: .8rem max(5%, calc((100% - var(--max)) / 2 + 5%));
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.chips::-webkit-scrollbar { display: none; }
+.chips a {
+  flex-shrink: 0;
+  border: 1px solid var(--line);
+  padding: .4rem 1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: .9rem;
+  color: var(--text);
+  transition: .2s;
+}
+.chips a:hover { border-color: var(--accent); color: var(--accent-dark); }
+.chips a.active { background: var(--btn); border-color: var(--btn); color: var(--on-btn); }
+
+/* Mostrar solo la sección elegida (si JavaScript está activo) */
+html.js .block { display: none; border-top: 0; }
+html.js .block.active { display: block; animation: tabIn .35s ease both; }
+@keyframes tabIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+.block { scroll-margin-top: calc(var(--header-h, 64px) + var(--tabs-h, 56px) + 8px); }

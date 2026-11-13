@@ -27,3 +27,53 @@ document.querySelectorAll("a[data-transition]").forEach((link) =>
   })
 );
 window.addEventListener("pageshow", () => document.body.classList.remove("leaving"));
+
+// Trayectoria: barra fija y una sección a la vez
+const tabsBar = document.getElementById("tabs");
+if (tabsBar) {
+  const header = document.querySelector(".header");
+  const links = [...tabsBar.querySelectorAll("a")];
+  const sections = [...document.querySelectorAll(".block")];
+
+  const setSizes = () => {
+    const root = document.documentElement.style;
+    root.setProperty("--header-h", header.offsetHeight + "px");
+    root.setProperty("--tabs-h", tabsBar.offsetHeight + "px");
+  };
+  setSizes();
+  window.addEventListener("resize", setSizes);
+
+  const show = (id, scroll) => {
+    if (!sections.some((s) => s.id === id)) id = sections[0].id;
+
+    sections.forEach((s) => s.classList.toggle("active", s.id === id));
+    links.forEach((l) => {
+      const on = l.getAttribute("href") === "#" + id;
+      l.classList.toggle("active", on);
+      if (on) {
+        l.setAttribute("aria-current", "true");
+        l.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
+      } else {
+        l.removeAttribute("aria-current");
+      }
+    });
+
+    // Si ya bajaste y la barra está pegada arriba, llevamos al inicio de la sección
+    const stuck = tabsBar.getBoundingClientRect().top <= header.offsetHeight + 1;
+    if (scroll && stuck) {
+      document.getElementById(id).scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  links.forEach((l) =>
+    l.addEventListener("click", (e) => {
+      e.preventDefault();
+      const id = l.getAttribute("href").slice(1);
+      history.replaceState(null, "", "#" + id);
+      show(id, true);
+    })
+  );
+
+  window.addEventListener("hashchange", () => show(location.hash.slice(1), false));
+  show(location.hash.slice(1), false);
+}

@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 
@@ -24,21 +25,22 @@
   </header>
 
   <main>
-    <div class="page-head">
+        <div class="page-head">
       <a href="index.html" class="back-link" data-transition>← Volver al inicio</a>
       <p class="eyebrow">Trayectoria</p>
       <h1>Formación, investigación y <em>práctica clínica</em>.</h1>
       <p class="lead">Un recorrido por mi formación, mi trabajo en investigación y docencia, y mi experiencia en la clínica con adolescentes.</p>
-      <nav class="chips" aria-label="Secciones">
-        <a href="#congresos">Congresos</a>
-        <a href="#maestrias">Maestrías</a>
-        <a href="#posgrados">Posgrados</a>
-        <a href="#papers">Papers</a>
-        <a href="#talleres">Talleres</a>
-        <a href="#clases">Clases universitarias</a>
-        <a href="#clinica">Clínica</a>
-      </nav>
     </div>
+
+    <nav class="chips" id="tabs" aria-label="Secciones">
+      <a href="#congresos">Congresos</a>
+      <a href="#maestrias">Maestrías</a>
+      <a href="#posgrados">Posgrados</a>
+      <a href="#papers">Papers</a>
+      <a href="#talleres">Talleres</a>
+      <a href="#clases">Clases universitarias</a>
+      <a href="#clinica">Clínica</a>
+    </nav>
 
     <!-- CONGRESOS -->
     <section class="block" id="congresos">

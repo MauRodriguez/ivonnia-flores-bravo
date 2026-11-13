@@ -47,12 +47,13 @@ if (tabsBar) {
   // scrollMode: "force" siempre baja a la sección, "click" solo si la barra ya está fija, false no mueve
   const show = (id, scrollMode) => {
     sections.forEach((s) => s.classList.toggle("active", s.id === id));
-    links.forEach((l) => {
+        links.forEach((l) => {
       const on = l.getAttribute("href") === "#" + id;
       l.classList.toggle("active", on);
       if (on) {
         l.setAttribute("aria-current", "true");
-        l.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
+        const left = l.offsetLeft - (tabsBar.clientWidth - l.offsetWidth) / 2;
+        tabsBar.scrollTo({ left: left, behavior: "smooth" });
       } else {
         l.removeAttribute("aria-current");
       }

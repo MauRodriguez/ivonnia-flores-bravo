@@ -247,3 +247,6 @@ html.js .block.active { display: block; animation: tabIn .35s ease both; }
     var(--bg) 100%
   );
 }
+
+.bg-taza { --bg-photo: url('../img/fondo-taza.jpg'); }
+.bg-consultorio { --bg-photo: url('../img/fondo-consultorio.jpg'); }

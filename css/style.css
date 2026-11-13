@@ -217,3 +217,33 @@ html.js .block.active { display: block; animation: tabIn .35s ease both; }
   color: var(--accent-dark);
   margin: 2rem 0 1rem;
 }
+
+/* Fondos con foto difuminada */
+.bg-img {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  --veil: .86;   /* 0 = foto más visible, 1 = no se ve */
+  --blur: 6px;   /* desenfoque */
+}
+.bg-img::before {
+  content: "";
+  position: absolute;
+  inset: -24px;
+  z-index: -2;
+  background: var(--bg-photo) center / cover no-repeat;
+  filter: blur(var(--blur)) grayscale(.55) brightness(1.15) contrast(.8);
+}
+.bg-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to bottom,
+    var(--bg) 0%,
+    rgba(44, 33, 28, var(--veil)) 22%,
+    rgba(44, 33, 28, var(--veil)) 78%,
+    var(--bg) 100%
+  );
+}

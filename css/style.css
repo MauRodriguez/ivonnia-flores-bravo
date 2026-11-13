@@ -273,3 +273,8 @@ html.js .block.active { display: block; animation: tabIn .35s ease both; }
 .section-alt > .lead {
   max-width: 560px;
 }
+
+/* Enfoque: el párrafo ocupa todo el ancho de la sección */
+#enfoque > .lead {
+  max-width: none;
+}

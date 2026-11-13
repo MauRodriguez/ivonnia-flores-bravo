@@ -223,8 +223,8 @@ html.js .block.active { display: block; animation: tabIn .35s ease both; }
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  --veil: .86;   /* 0 = foto más visible, 1 = no se ve */
-  --blur: 6px;   /* desenfoque */
+  --veil: .55;   /* 0 = foto más visible, 1 = no se ve */
+  --blur: 2px;   /* desenfoque */
 }
 .bg-img::before {
   content: "";
@@ -232,7 +232,7 @@ html.js .block.active { display: block; animation: tabIn .35s ease both; }
   inset: -24px;
   z-index: -2;
   background: var(--bg-photo) center / cover no-repeat;
-  filter: blur(var(--blur)) grayscale(.55) brightness(1.15) contrast(.8);
+  filter: blur(var(--blur)) grayscale(.35) brightness(1.2) contrast(.9) saturate(.9);
 }
 .bg-img::after {
   content: "";
@@ -242,11 +242,14 @@ html.js .block.active { display: block; animation: tabIn .35s ease both; }
   background: linear-gradient(
     to bottom,
     var(--bg) 0%,
-    rgba(44, 33, 28, var(--veil)) 22%,
-    rgba(44, 33, 28, var(--veil)) 78%,
+    rgba(44, 33, 28, var(--veil)) 15%,
+    rgba(44, 33, 28, var(--veil)) 85%,
     var(--bg) 100%
   );
 }
+/* Para que el texto se lea bien sobre la foto */
+.bg-img h1, .bg-img h2, .bg-img .eyebrow { text-shadow: 0 1px 14px rgba(0, 0, 0, .5); }
+.bg-img .lead { color: var(--text); text-shadow: 0 1px 12px rgba(0, 0, 0, .5); }
 
 .bg-taza { --bg-photo: url('../img/fondo-taza.jpg'); }
 .bg-consultorio { --bg-photo: url('../img/fondo-consultorio.jpg'); }

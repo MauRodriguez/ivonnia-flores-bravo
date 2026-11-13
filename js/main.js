@@ -33,7 +33,8 @@ const tabsBar = document.getElementById("tabs");
 if (tabsBar) {
   const header = document.querySelector(".header");
   const links = [...tabsBar.querySelectorAll("a")];
-  const sections = [...document.querySelectorAll(".block")];
+  const sections = [...document.querySelectorAll("#trayectoria .block")];
+  const ids = sections.map((s) => s.id);
 
   const setSizes = () => {
     const root = document.documentElement.style;
@@ -43,9 +44,8 @@ if (tabsBar) {
   setSizes();
   window.addEventListener("resize", setSizes);
 
-  const show = (id, scroll) => {
-    if (!sections.some((s) => s.id === id)) id = sections[0].id;
-
+  // scrollMode: "force" siempre baja a la sección, "click" solo si la barra ya está fija, false no mueve
+  const show = (id, scrollMode) => {
     sections.forEach((s) => s.classList.toggle("active", s.id === id));
     links.forEach((l) => {
       const on = l.getAttribute("href") === "#" + id;
@@ -58,9 +58,8 @@ if (tabsBar) {
       }
     });
 
-    // Si ya bajaste y la barra está pegada arriba, llevamos al inicio de la sección
     const stuck = tabsBar.getBoundingClientRect().top <= header.offsetHeight + 1;
-    if (scroll && stuck) {
+    if (scrollMode === "force" || (scrollMode === "click" && stuck)) {
       document.getElementById(id).scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
@@ -70,10 +69,16 @@ if (tabsBar) {
       e.preventDefault();
       const id = l.getAttribute("href").slice(1);
       history.replaceState(null, "", "#" + id);
-      show(id, true);
+      show(id, "click");
     })
   );
 
-  window.addEventListener("hashchange", () => show(location.hash.slice(1), false));
-  show(location.hash.slice(1), false);
+  window.addEventListener("hashchange", () => {
+    const id = location.hash.slice(1);
+    if (ids.includes(id)) show(id, "force");
+  });
+
+  const start = location.hash.slice(1);
+  if (ids.includes(start)) show(start, "force");
+  else show(ids[0], false);
 }

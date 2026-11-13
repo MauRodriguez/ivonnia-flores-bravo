@@ -193,3 +193,27 @@ html.js .block.active { display: block; animation: tabIn .35s ease both; }
   to { opacity: 1; transform: none; }
 }
 .block { scroll-margin-top: calc(var(--header-h, 64px) + var(--tabs-h, 56px) + 8px); }
+
+/* Trayectoria dentro de la página principal */
+#trayectoria .chips {
+  padding: .8rem 0;
+  margin-top: 1rem;
+}
+#trayectoria .block {
+  max-width: none;
+  margin: 0;
+  padding: 2rem 0 0;
+  border-top: 0;
+}
+#trayectoria .block .block-title {
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  color: var(--text);
+  margin: 0 0 1.2rem;
+}
+#trayectoria .block h4 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: var(--accent-dark);
+  margin: 2rem 0 1rem;
+}

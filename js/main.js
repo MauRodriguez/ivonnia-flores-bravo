@@ -92,6 +92,22 @@ document.querySelectorAll(".flip").forEach((btn) =>
   })
 );
 
+// Barra fija de reserva: se muestra después de la portada y se oculta en Contacto
+const stickyCta = document.getElementById("stickyCta");
+if (stickyCta && "IntersectionObserver" in window) {
+  const ctaLink = stickyCta.querySelector("a");
+  const watched = [document.getElementById("inicio"), document.getElementById("contacto")];
+  const inView = new Set();
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e) => (e.isIntersecting ? inView.add(e.target) : inView.delete(e.target)));
+    const show = inView.size === 0;
+    stickyCta.classList.toggle("visible", show);
+    stickyCta.setAttribute("aria-hidden", String(!show));
+    ctaLink.tabIndex = show ? 0 : -1;
+  });
+  watched.forEach((el) => obs.observe(el));
+}
+
 // Email armado por partes para evitar que lo rastreen los robots de spam
 const user = "ivo.flores12";      // la parte antes de la @
 const domain = "gmail.com";

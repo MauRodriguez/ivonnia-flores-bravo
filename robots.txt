@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://licfloresbravo.vercel.app/sitemap.xml

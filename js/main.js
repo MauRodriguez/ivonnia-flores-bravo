@@ -83,3 +83,11 @@ if (tabsBar) {
   if (ids.includes(start)) show(start, "force");
   else show(ids[0], false);
 }
+
+// Tarjetas que se dan vuelta
+document.querySelectorAll(".flip").forEach((btn) =>
+  btn.addEventListener("click", () => {
+    const on = btn.getAttribute("aria-pressed") === "true";
+    btn.setAttribute("aria-pressed", String(!on));
+  })
+);

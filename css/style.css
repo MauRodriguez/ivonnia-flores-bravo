@@ -278,3 +278,96 @@ html.js .block.active { display: block; animation: tabIn .35s ease both; }
 #enfoque > .lead {
   max-width: none;
 }
+
+/* Tarjetas con número: "i  Título" en una sola línea */
+.card:has(.card-num) {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: .7rem;
+  align-items: baseline;
+}
+.card:has(.card-num) .card-num { margin-bottom: 0; }
+.card:has(.card-num) h3 { margin-bottom: 0; }
+.card:has(.card-num) p { grid-column: 1 / -1; margin-top: .8rem; }
+
+/* Todas las secciones con el mismo ancho de contenido */
+.section,
+.hero {
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: max(5%, calc(50% - var(--max) / 2));
+  padding-right: max(5%, calc(50% - var(--max) / 2));
+}
+
+/* Proceso: tarjetas que se dan vuelta */
+.flips {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+.flip {
+  display: block;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  perspective: 1000px;
+  border-radius: var(--radius);
+}
+.flip:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+.flip-inner {
+  display: grid;
+  min-height: 200px;
+  transform-style: preserve-3d;
+  transition: transform .7s cubic-bezier(.4, .2, .2, 1);
+}
+.flip[aria-pressed="true"] .flip-inner { transform: rotateY(180deg); }
+
+.face {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .6rem;
+  padding: 1.6rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.face-front {
+  background: var(--card);
+  align-items: flex-start;
+  transition: border-color .2s;
+}
+.flip:hover .face-front { border-color: var(--accent); }
+.face-front svg {
+  width: 34px;
+  height: 34px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.face-title { font-family: "Fraunces", Georgia, serif; font-size: 1.3rem; color: var(--text); line-height: 1.2; }
+.face-hint { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+
+.face-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(145deg, var(--btn), #6e3f1f);
+  border-color: transparent;
+  color: var(--on-btn);
+}
+.face-label { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; opacity: .8; }
+.face-value { font-family: "Fraunces", Georgia, serif; font-size: 1.3rem; line-height: 1.3; }
+
+@media (max-width: 1000px) { .flips { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .flips { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .flip-inner { transition: none; } }

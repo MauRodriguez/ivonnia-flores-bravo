@@ -91,3 +91,12 @@ document.querySelectorAll(".flip").forEach((btn) =>
     btn.setAttribute("aria-pressed", String(!on));
   })
 );
+
+// Email armado por partes para evitar que lo rastreen los robots de spam
+const user = "ivo.flores12";      // la parte antes de la @
+const domain = "gmail.com";
+document.querySelectorAll("[data-mail]").forEach((el) => {
+  const address = user + "@" + domain;
+  el.href = "mailto:" + address;
+  if (el.hasAttribute("data-show")) el.textContent = address;
+});

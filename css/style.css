@@ -279,6 +279,10 @@ html.js .block.active { display: block; animation: tabIn .35s ease both; }
   max-width: none;
 }
 
+#trayectoria > .lead {
+  max-width: none;
+}
+
 /* Tarjetas con número: "i  Título" en una sola línea */
 .card:has(.card-num) {
   display: grid;

@@ -3,16 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lic. Ivonnia Flores Bravo | Psicóloga TCC online</title>
-  <meta name="description" content="Lic. Ivonnia Flores Bravo, psicóloga (M.N. 77804). Terapia cognitivo-conductual basada en evidencia para adolescentes, jóvenes y adultos. Sesiones online.">
+  <title>Lic. Ivonnia Flores Bravo | Psicóloga TCC</title>
+  <meta name="description" content="Lic. Ivonnia Flores Bravo, psicóloga (M.N. 77804). Terapia cognitivo-conductual basada en evidencia para adolescentes, jóvenes y adultos. Sesiones virtuales.">
   <link rel="canonical" href="https://licfloresbravo.vercel.app/">
+  <link rel="alternate" hreflang="es" href="https://licfloresbravo.vercel.app/">
+  <link rel="alternate" hreflang="en" href="https://licfloresbravo.vercel.app/en/">
+  <link rel="alternate" hreflang="x-default" href="https://licfloresbravo.vercel.app/">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕️</text></svg>">
   <meta name="theme-color" content="#2c211c">
 
   <!-- Vista previa al compartir en WhatsApp, Instagram, etc. -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_AR">
-  <meta property="og:title" content="Lic. Ivonnia Flores Bravo | Psicóloga TCC online">
+  <meta property="og:title" content="Lic. Ivonnia Flores Bravo | Psicóloga TCC">
   <meta property="og:description" content="Terapia cognitivo-conductual basada en evidencia para adolescentes, jóvenes y adultos.">
   <meta property="og:url" content="https://licfloresbravo.vercel.app/">
   <meta property="og:image" content="https://licfloresbravo.vercel.app/img/fondo-consultorio.jpg">
@@ -38,7 +41,7 @@
         "name": "Lic. Ivonnia Flores Bravo - Psicóloga",
         "url": "https://licfloresbravo.vercel.app/",
         "image": "https://licfloresbravo.vercel.app/img/fondo-consultorio.jpg",
-        "description": "Psicoterapia cognitivo-conductual basada en evidencia para adolescentes, jóvenes, adultos y adultos mayores. Sesiones online.",
+        "description": "Psicoterapia cognitivo-conductual basada en evidencia para adolescentes, jóvenes, adultos y adultos mayores. Sesiones virtuales.",
         "areaServed": "Argentina",
         "sameAs": ["https://instagram.com/priorizarte_psi"]
       }
@@ -56,16 +59,22 @@
 
   <header class="header">
     <a href="#inicio" class="logo">Ivonnia Flores Bravo</a>
-    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">☰</button>
-    <nav class="nav" id="nav">
-      <a href="#sobre-mi">Sobre mí</a>
-      <a href="#enfoque">Enfoque</a>
-      <a href="#proceso">Proceso</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#trayectoria">Trayectoria</a>
-      <a href="#contacto" class="nav-cta">Contacto</a>
-    </nav>
+    <div class="header-right">
+      <nav class="nav" id="nav">
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#enfoque">Enfoque</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#trayectoria">Trayectoria</a>
+        <a href="#contacto" class="nav-cta">Contacto</a>
+      </nav>
+      <a href="en/" class="lang-btn" lang="en" hreflang="en" aria-label="View this page in English">EN</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
+  <div class="nav-backdrop" id="navBackdrop" hidden></div>
 
   <main>
 
@@ -91,9 +100,11 @@
     <section class="section" id="sobre-mi">
       <p class="eyebrow">Sobre mí</p>
       <h2>Hola, soy <em>Ivonnia</em>.</h2>
-      <div class="two-col">
-        <p>Soy Licenciada en Psicología por la Pontificia Universidad Católica Argentina (UCA), egresada en 2021. M.N. 77804.</p>
-        <p>Cada proceso terapéutico es único. Por eso las sesiones se adaptan a las necesidades, la historia y los objetivos de cada persona, en un espacio de confianza y sin juicios.</p>
+      <div class="about-text">
+        <p>Soy Licenciada en Psicología y Magíster en Psicología Clínica Infanto-Juvenil. Actualmente, curso el Doctorado en Psicología en la Pontificia Universidad Católica Argentina (UCA), en el marco de una beca conjunta UCA-CONICET.</p>
+        <p>Mi investigación doctoral se titula «El efecto modulador de las competencias digitales en el impacto del uso de redes y la imagen corporal». Analizo cómo las redes sociales influyen en la manera en que percibimos y nos relacionamos con nuestro cuerpo, así como el papel de las competencias digitales en este vínculo.</p>
+        <p>Entiendo la terapia como un proceso único y personal. Por eso, cada espacio terapéutico se construye de manera individual, teniendo en cuenta la historia, las necesidades y los objetivos de cada persona, en un entorno de confianza, escucha y sin juicios.</p>
+        <p class="about-mn">Matrícula Nacional: 77804.</p>
       </div>
       <a href="#trayectoria" class="btn btn-ghost btn-more">Ver mi trayectoria →</a>
     </section>
@@ -243,7 +254,7 @@
         <h3 class="block-title">Maestrías y doctorado</h3>
         <ul class="tl">
           <li><b>2023 – presente</b><p>Doctorado, becaria doctoral <span class="tag">En curso</span><small>Pontificia Universidad Católica Argentina y CONICET · Tesis: el efecto modulador de las competencias digitales en el impacto del uso de redes sociales en la imagen corporal</small></p></li>
-          <li><b>2023 – 2024</b><p>Máster Online en Psicología Clínica Infanto Juvenil<small>TECH Institute · España</small></p></li>
+          <li><b>2023 – 2024</b><p>Máster en Psicología Clínica Infanto Juvenil<small>TECH Institute · España</small></p></li>
         </ul>
       </div>
 
@@ -297,8 +308,8 @@
         <p class="block-note">Talleres diseñados y dictados para estudiantes de nivel secundario y docentes, desde 2024.</p>
         <ul class="tl">
           <li><b>Presencial</b><p>Imagen Corporal, Alimentación y Redes Sociales<small>Para alumnas de 7.º grado · Colegio Mater Ter Admirabilis</small></p></li>
-          <li><b>Online</b><p>¿Cómo acompañar al adolescente?<small>Para docentes de grado medio</small></p></li>
-          <li><b>Online</b><p>Neurodiversidad: estrategias para trabajar en aulas heterogéneas<small>Para docentes de grado medio</small></p></li>
+          <li><b>Virtual</b><p>¿Cómo acompañar al adolescente?<small>Para docentes de grado medio</small></p></li>
+          <li><b>Virtual</b><p>Neurodiversidad: estrategias para trabajar en aulas heterogéneas<small>Para docentes de grado medio</small></p></li>
           <li><b>Presencial</b><p>Armado de CV y Entrevista Laboral<small>Para alumnos del último año del colegio · UCA</small></p></li>
         </ul>
       </div>

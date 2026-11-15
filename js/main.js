@@ -1,18 +1,34 @@
 // Menú en celular
 const menuBtn = document.getElementById("menuBtn");
 const nav = document.getElementById("nav");
+const backdrop = document.getElementById("navBackdrop");
+const menuLabels = {
+  open: menuBtn.getAttribute("aria-label"),
+  close: menuBtn.dataset.closeLabel || (document.documentElement.lang === "en" ? "Close menu" : "Cerrar menú"),
+};
 
-menuBtn.addEventListener("click", () => {
-  const open = nav.classList.toggle("open");
-  menuBtn.setAttribute("aria-expanded", open);
+const setMenu = (open) => {
+  nav.classList.toggle("open", open);
+  menuBtn.setAttribute("aria-expanded", String(open));
+  menuBtn.setAttribute("aria-label", open ? menuLabels.close : menuLabels.open);
+  if (backdrop) backdrop.hidden = !open;
+};
+
+menuBtn.addEventListener("click", () => setMenu(!nav.classList.contains("open")));
+nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setMenu(false)));
+
+// Tocar fuera del menú (o la tecla Escape) lo cierra
+document.addEventListener("click", (e) => {
+  if (nav.classList.contains("open") && !nav.contains(e.target) && !menuBtn.contains(e.target)) setMenu(false);
 });
-
-nav.querySelectorAll("a").forEach((link) =>
-  link.addEventListener("click", () => {
-    nav.classList.remove("open");
-    menuBtn.setAttribute("aria-expanded", "false");
-  })
-);
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && nav.classList.contains("open")) {
+    setMenu(false);
+    menuBtn.focus();
+  }
+});
+// Si se agranda la pantalla con el menú abierto, se cierra
+window.matchMedia("(min-width: 801px)").addEventListener("change", (e) => e.matches && setMenu(false));
 
 // Año del footer
 document.getElementById("year").textContent = new Date().getFullYear();

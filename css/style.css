@@ -116,7 +116,7 @@ a { color: var(--accent-dark); }
 .btn-ghost:hover { background: var(--btn); border-color: var(--btn); color: var(--on-btn); }
 
 /* Sobre mí */
-.about-text { max-width: 720px; color: var(--muted); font-size: 1.05rem; }
+.about-text { color: var(--muted); font-size: 1.05rem; }
 .about-text p + p { margin-top: 1.1rem; }
 .about-text .about-mn { font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
 

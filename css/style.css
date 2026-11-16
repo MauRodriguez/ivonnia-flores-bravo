@@ -41,7 +41,8 @@ a { color: var(--accent-dark); }
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
 }
-.logo { font-family: "Fraunces", serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+.logo { display: inline-flex; align-items: center; gap: .6rem; font-family: "Fraunces", serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+.logo-mark { height: 40px; width: auto; margin: -6px 0; flex-shrink: 0; }
 .nav { display: flex; gap: 1.5rem; align-items: center; }
 .nav a { color: var(--text); text-decoration: none; font-size: .95rem; }
 .nav a:hover { color: var(--accent); }
@@ -147,7 +148,17 @@ a { color: var(--accent-dark); }
 .contact-list { max-width: 520px; margin-left: auto; margin-right: auto; }
 
 /* Footer */
-.footer { text-align: center; padding: 2rem 5%; font-size: .9rem; color: var(--muted); border-top: 1px solid var(--line); }
+.footer { text-align: center; padding: 2.5rem 5% 2rem; font-size: .9rem; color: var(--muted); border-top: 1px solid var(--line); }
+.footer-logo { display: block; width: 200px; height: auto; margin: 0 auto 1.5rem; opacity: .85; }
+@media (max-width: 800px) { .footer-logo { width: 160px; } }
+
+/* Celulares angostos: que el nombre no pase a dos líneas */
+.logo { white-space: nowrap; }
+@media (max-width: 380px) {
+  .logo { font-size: 1.02rem; gap: .45rem; }
+  .logo-mark { height: 32px; margin: -4px 0; }
+  .header-right { gap: .5rem; }
+}
 
 /* Celular */
 @media (max-width: 800px) {
